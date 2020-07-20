@@ -42,12 +42,17 @@ function resetChanges() {
 // IMPORT
 
 function import_data(metadata, filedata) {
-    let mdata = metadata[0];
-    let fdata = filedata[0];
-
-    last_filename = mdata.name;
     resetChanges();
-    editor.set(JSON.parse(fdata));
+    if (metadata.length == 1) {
+        last_filename = metadata[0].name;
+        editor.set(JSON.parse(filedata[0]));
+    } else {
+        let data = {};
+        for (let i = 0; i < metadata.length; i++) {
+            data[metadata[i].name] = JSON.parse(filedata[i]);
+        }
+        editor.set(data);
+    }
 }
 
 makeClickUploadable(import_button, import_data);
