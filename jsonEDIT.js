@@ -1,23 +1,23 @@
 import { makeDragUploadable, makeClickUploadable } from "./fileupload.js";
 import { save_as } from "./filedownload.js";
-import { setCookie, getCookie, year } from "./cookiefunctions.js";
 
 const edit_div = document.querySelector("#editor");
 const export_button = document.querySelector("#export");
 const import_button = document.querySelector("#import");
+const mode_key = "jsoneditor-mode";
 
 // EDITOR
 
 let last_filename = "Untitled.json";
 
 let editor = new JSONEditor(edit_div, {
-    mode: getCookie('jsoneditor-mode') || 'tree',
-    modes: ['tree', 'code', 'text', 'view', 'form', 'preview'],
-    onChange: e => {
+    mode: window.localStorage.getItem(mode_key) || 'tree',
+    modes: ['tree', 'code', 'form', 'view', 'text', 'preview'],
+    onChange: () => {
         madeChanges();
     },
     onModeChange: (newmode, oldmode) => {
-        setCookie('jsoneditor-mode', newmode, year);
+        window.localStorage.setItem(mode_key, newmode);
     }
 })
 
