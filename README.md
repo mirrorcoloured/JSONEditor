@@ -1,7 +1,7 @@
 # JSONEditor
 Basic implementation of jsoneditor (https://github.com/josdejong/jsoneditor)
 
-Bundled version (bundle_index.html) can be used as a standalone file in a browser, or the main page (index.html) can be hosted by a server.
+Bundled version (bundle_jsoneditor.html) can be used as a standalone file in a browser, or the main page (jsoneditor.html) can be hosted by a server.
 
 Adds:
 * simple file importing/exporting
